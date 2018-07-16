@@ -6,7 +6,7 @@ It is based on the **nips_2018.sty style** (can be found here: https://media.nip
 
 ## Usage:
 1. Copy arxiv.sty to the folder containing your tex file.
-2. add \usepackage{arxiv} after \documentclass{article}.
+2. add `\usepackage{arxiv}` after `\documentclass{article}`.
 
 See **template.tex** for a sample preprint article file.
 
