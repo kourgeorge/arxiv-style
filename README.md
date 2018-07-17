@@ -3,6 +3,8 @@
 This is a simplified version of the NIPS latex style that is suitable for preprint publication such as arXiv and bio-arXiv.
 It is based on the **nips_2018.sty style** (can be found here: https://media.nips.cc/Conferences/NIPS2018/Styles/nips_2018.sty)
 
+**However, this styling looks fairly different from the NIPS so that readers of your paper will not get confused and think that your paper was accepted to NIPS**.
+
 ### Why NIPS? 
 Because the NIPS styling is a very comfortable single column format that is very esthetic and convenient for reading.
 
