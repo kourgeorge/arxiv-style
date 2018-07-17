@@ -8,13 +8,6 @@
   \@natbibfalse
 }
 
-% declare preprint option, which creates a preprint version ready for
-% upload to, e.g., arXiv
-\newif\if@preprint\@preprintfalse
-\DeclareOption{preprint}{
-  \@preprinttrue
-}
-
 \ProcessOptions\relax
 
 % fonts
@@ -43,6 +36,12 @@
 \clubpenalty=10000
 \flushbottom
 \sloppy
+
+%Handling Keywords
+\def\keywordname{{\bfseries \emph Keywords}}%
+\def\keywords#1{\par\addvspace\medskipamount{\rightskip=0pt plus1cm
+\def\and{\ifhmode\unskip\nobreak\fi\ $\cdot$
+}\noindent\keywordname\enspace\ignorespaces#1\par}}
 
 % font sizes with reduced leading
 \renewcommand{\normalsize}{%
@@ -217,10 +216,12 @@
     \hsize\textwidth
     \linewidth\hsize
     \vskip 0.1in
-    %\@toptitlebar
+\fbox{\begin{minipage}{5.5in}
+    \@toptitlebar
     \centering
     {\LARGE\bf \@title\par}
-    %\@bottomtitlebar
+    \@bottomtitlebar
+\end{minipage}}
     \vskip 0.1in
     
     \def\And{%
@@ -249,16 +250,17 @@
 % abstract styling
 \renewenvironment{abstract}%
 {%
-  \vskip 0.1in%
+  %\vskip 0.1in%
   \centerline%
   {\large\bf Abstract}%
+  
   \vspace{0.5ex}%
   \begin{quote}%
 }
 {
   \par%
   \end{quote}%
-  \vskip 1ex%
+  %\vskip 1ex%
 }
 
 \endinput
