@@ -24,7 +24,7 @@
 \AtBeginDocument{
   \newgeometry{
     textheight=9in,
-    textwidth=5.5in,
+    textwidth=6.5in,
     top=1in,
     headheight=12pt,
     headsep=25pt,
@@ -36,6 +36,15 @@
 \clubpenalty=10000
 \flushbottom
 \sloppy
+
+\usepackage{fancyhdr}
+\fancyhf{}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\fancyheadoffset{0pt}
+\fancyhead[R]{\sc \large A preprint}
+
+
 
 %Handling Keywords
 \def\keywordname{{\bfseries \emph Keywords}}%
@@ -250,7 +259,7 @@
 {%
   %\vskip 0.1in%
   \centerline%
-  {\large\bf Abstract}%
+  {\large \bfseries \scshape Abstract}%
   
   \vspace{0.5ex}%
   \begin{quote}%
