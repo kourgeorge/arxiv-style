@@ -25,7 +25,7 @@ See **template.tex**
 
 
 ## General Notes:
-1. For help you can contact the author at: kourgeorge/at/gmail.com.
+1. For help, comments, praises, bug reporting or change requests, you can contact the author at: kourgeorge/at/gmail.com.
 2. You can use, redistribute and do whatever with this project, however, the author takes no responsibility on whatever usage of this project.
 3. If you start another project based on this project, it would be nice to mention/link to this project.
 4. You are very welcome to contribute to this project.
