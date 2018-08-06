@@ -9,7 +9,7 @@ Because the NIPS styling is a comfortable single column format that is very esth
 ## Usage:
 1. Copy **arxiv.sty** to the folder containing your tex file.
 2. add `\usepackage{arxiv}` after `\documentclass{article}`.
-3. Do not use geometry package.
+3. The only packages used in the style file are **geomentry** and **fancyheader**. Do not reimport them.
 
 See **template.tex** 
 
