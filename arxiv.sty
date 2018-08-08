@@ -42,7 +42,8 @@
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
 \fancyheadoffset{0pt}
-\fancyhead[R]{\sc \large A preprint}
+\rhead{\sc \large A preprint - \today}
+\cfoot{\thepage}
 
 
 %Handling Keywords
@@ -206,14 +207,14 @@
 
 % rules for title box at top of first page
 \newcommand{\@toptitlebar}{
-  \hrule height 3\p@
+  \hrule height 2\p@
   \vskip 0.25in
   \vskip -\parskip%
 }
 \newcommand{\@bottomtitlebar}{
   \vskip 0.29in
   \vskip -\parskip
-  \hrule height 3\p@
+  \hrule height 2\p@
   \vskip 0.09in%
 }
 
