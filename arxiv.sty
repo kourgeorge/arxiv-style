@@ -11,7 +11,7 @@
 \ProcessOptions\relax
 
 % fonts
-\renewcommand{\rmdefault}{ptm}
+\renewcommand{\rmdefault}{phv}
 \renewcommand{\sfdefault}{phv}
 
 % load natbib unless told otherwise
@@ -42,7 +42,7 @@
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
 \fancyheadoffset{0pt}
-\rhead{\sc \large A preprint - \today}
+\rhead{\scshape A preprint - \today}
 \cfoot{\thepage}
 
 
@@ -227,10 +227,10 @@
     \vskip 0.1in
     \@toptitlebar
     \centering
-    {\LARGE\bf \@title\par}
+    {\LARGE\sc \@title\par}
     \@bottomtitlebar
     \vskip 0.1in
-    
+    \textsc{A Preprint}\\
     \def\And{%
       \end{tabular}\hfil\linebreak[0]\hfil%
       \begin{tabular}[t]{c}\bf\rule{\z@}{24\p@}\ignorespaces%

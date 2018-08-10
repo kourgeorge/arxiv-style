@@ -72,6 +72,9 @@
 
 \subsection{Headings: second level}
 \lipsum[5]
+\begin{equation}
+\xi _{ij}(t)=P(x_{t}=i,x_{t+1}=j|y,v,w;\theta)= {\frac {\alpha _{i}(t)a^{w_t}_{ij}\beta _{j}(t+1)b^{v_{t+1}}_{j}(y_{t+1})}{\sum _{i=1}^{N} \sum _{j=1}^{N} \alpha _{i}(t)a^{w_t}_{ij}\beta _{j}(t+1)b^{v_{t+1}}_{j}(y_{t+1})}}
+\end{equation}
 
 \subsubsection{Headings: third level}
 \lipsum[6]
@@ -97,14 +100,14 @@ produces
   Hasselmo, et al.\ (1995) investigated\dots
 \end{quote}
 
-\subsection{Footnotes}
-
-\lipsum[9] \footnote{Sample of the first footnote.}
+\begin{center}
+  \url{https://www.ctan.org/pkg/booktabs}
+\end{center}
 
 
 \subsection{Figures}
 \lipsum[10] 
-See Figure \ref{fig:fig1}.
+See Figure \ref{fig:fig1}. Here is how you add footnotes. \footnote{Sample of the first footnote.}
 \lipsum[11] 
 
 \begin{figure}
@@ -116,18 +119,10 @@ See Figure \ref{fig:fig1}.
 
 \subsection{Tables}
 \lipsum[12]
-See awesome Table \ref{tab:table}.
-
-
-\begin{center}
-  \url{https://www.ctan.org/pkg/booktabs}
-\end{center}
-
-This package was used to typeset Table~\ref{sample-table}.
+See awesome Table~\ref{tab:table}.
 
 \begin{table}
-  \caption{Sample table title}
-  \label{sample-table}
+ \caption{Sample table title}
   \centering
   \begin{tabular}{lll}
     \toprule
@@ -143,10 +138,8 @@ This package was used to typeset Table~\ref{sample-table}.
   \label{tab:table}
 \end{table}
 
-\section{Lists and other stuff}
-
+\subsection{Lists}
 \begin{itemize}
-
 \item Lorem ipsum dolor sit amet
 \item consectetur adipiscing elit. 
 \item Aliquam dignissim blandit est, in dictum tortor gravida eget. In ac rutrum magna.
