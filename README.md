@@ -2,10 +2,10 @@
 ## Description:
 
 The project hosts an aesthetic an simple LaTeX style suitable for "preprint" publications such as arXiv and bio-arXiv, etc. 
-It is based on the [**nips_2018.sty**](https://media.nips.cc/Conferences/NIPS2018/Styles/nips_2018.sty) style file. 
+It is based on the [**nips_2018.sty**](https://media.nips.cc/Conferences/NIPS2018/Styles/nips_2018.sty) style.
 
-The goal of this style is to use to maintain the beautiful and comfortable styling of NIPS but to look fairly different from so that readers won't get confused to think that the preprint was published in NIPS. 
-In addition, we will add/change features which, IOHO, are missing in the NIPS styling.
+This styling maintains the esthetic of NIPS but adding and changing features to make it (IMO) even better and nore suitable for preprints.
+The result looks fairly different from NIPS style so that readers won't get confused to think that the preprint was published in NIPS. 
 
 ### Why NIPS? 
 Because the NIPS styling is a comfortable single column format that is very esthetic and convenient for reading.
