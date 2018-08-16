@@ -11,9 +11,10 @@ The result looks fairly different from NIPS style so that readers won't get conf
 Because the NIPS styling is a comfortable single column format that is very esthetic and convenient for reading.
 
 ## Usage:
-1. Copy **arxiv.sty** to the folder containing your tex file.
-2. add `\usepackage{arxiv}` after `\documentclass{article}`.
-3. The only packages used in the style file are **geomentry** and **fancyheader**. Do not reimport them.
+1. Use Document class **article**. 
+2. Copy **arxiv.sty** to the folder containing your tex file.
+3. add `\usepackage{arxiv}` after `\documentclass{article}`.
+4. The only packages used in the style file are **geomentry** and **fancyheader**. Do not reimport them.
 
 See **template.tex** 
 
