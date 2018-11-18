@@ -11,9 +11,10 @@ The result looks fairly different from NIPS style so that readers won't get conf
 Because the NIPS styling is a comfortable single column format that is very esthetic and convenient for reading.
 
 ## Usage:
-1. Copy **arxiv.sty** to the folder containing your tex file.
-2. add `\usepackage{arxiv}` after `\documentclass{article}`.
-3. The only packages used in the style file are **geomentry** and **fancyheader**. Do not reimport them.
+1. Use Document class **article**. 
+2. Copy **arxiv.sty** to the folder containing your tex file.
+3. add `\usepackage{arxiv}` after `\documentclass{article}`.
+4. The only packages used in the style file are **geometry** and **fancyheader**. Do not reimport them.
 
 See **template.tex** 
 
@@ -29,3 +30,4 @@ See **template.tex**
 2. You can use, redistribute and do whatever with this project, however, the author takes no responsibility on whatever usage of this project.
 3. If you start another project based on this project, it would be nice to mention/link to this project.
 4. You are very welcome to contribute to this project.
+5. A good looking 2 column template can be found in https://github.com/brenhinkeller/preprint-template.tex.
