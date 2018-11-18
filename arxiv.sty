@@ -1,23 +1,10 @@
 \NeedsTeXFormat{LaTeX2e}
 
-% declare nonatbib option, which does not load natbib in case of
-% package clash (users can pass options to natbib via
-% \PassOptionsToPackage)
-\newif\if@natbib\@natbibtrue
-\DeclareOption{nonatbib}{
-  \@natbibfalse
-}
-
 \ProcessOptions\relax
 
 % fonts
 \renewcommand{\rmdefault}{ptm}
 \renewcommand{\sfdefault}{phv}
-
-% load natbib unless told otherwise
-\if@natbib
-  \RequirePackage{natbib}
-\fi
 
 % set page geometry
 \usepackage[verbose=true,letterpaper]{geometry}
