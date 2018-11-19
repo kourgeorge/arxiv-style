@@ -25,6 +25,22 @@ See **template.tex**
 4. **template.pdf** - a sample output of the template file that demonstrated the design provided by the arxiv style.
 
 
+## Handling References when submitting to arXiv.org
+The most convinient way to manage references is using an external bibtex file and pointing to it from the main file. 
+However this require running the [bibtex](http://www.bibtex.org/) tool to "compile" to convert bibtex items to "bibitems" that can be directly inserted in the main tex file. 
+However, the arXiv Tex environment ([Tex Live](https://www.tug.org/texlive/)) do not do that. 
+So easiest way when submitting to arxiv is to create a single self contained .tex file that contains the references.
+This can be done by running the bibtex command on your machine and insert the content of the generated `.bbl` file into the `.tex` file and commenting out the `\bibliography{references}` that point to the external references file.
+
+Below are the commands that should be run in the project folder:
+1. Run `$ latex template`
+2. Run `$ bibtex template`
+3. A `template.bbl` file will be generated (make sure it is there)
+4. Copy the `template.bbl` file content and insert into the `.tex` file into the `\begin{thebibliography}` command.
+5. comment out the `\bibliography{references}` command.
+6. You ready to submit to arXiv.org.
+
+
 ## General Notes:
 1. For help, comments, praises, bug reporting or change requests, you can contact the author at: kourgeorge/at/gmail.com.
 2. You can use, redistribute and do whatever with this project, however, the author takes no responsibility on whatever usage of this project.
