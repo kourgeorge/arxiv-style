@@ -36,8 +36,8 @@ Below are the commands that should be run in the project folder:
 1. Run `$ latex template`
 2. Run `$ bibtex template`
 3. A `template.bbl` file will be generated (make sure it is there)
-4. Copy the `template.bbl` file content and insert into the `.tex` file into the `\begin{thebibliography}` command.
-5. comment out the `\bibliography{references}` command.
+4. Copy the `template.bbl` file content to `template.tex` into the `\begin{thebibliography}` command.
+5. Comment out the `\bibliography{references}` command in `template.tex`.
 6. You ready to submit to arXiv.org.
 
 
