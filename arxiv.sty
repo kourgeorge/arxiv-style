@@ -27,9 +27,10 @@
 \usepackage{fancyhdr}
 \fancyhf{}
 \pagestyle{fancy}
-\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\headrulewidth}{0.4pt}
 \fancyheadoffset{0pt}
-\rhead{\scshape A preprint - \today}
+\rhead{\scshape \footnotesize A preprint}
+\chead{\@title}
 \cfoot{\thepage}
 
 
@@ -227,7 +228,7 @@
       \begin{tabular}[t]{c}\bf\rule{\z@}{24\p@}\ignorespaces%
     }
     \begin{tabular}[t]{c}\bf\rule{\z@}{24\p@}\@author\end{tabular}%
-  \vskip 0.4in \@minus 0.1in \center{\today}   \vskip 0.2in
+  \vskip 0.4in \@minus 0.1in \center{\@date}   \vskip 0.2in
   }
 }
 
