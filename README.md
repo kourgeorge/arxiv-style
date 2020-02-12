@@ -4,7 +4,7 @@
 The project hosts an aesthetic an simple LaTeX style suitable for "preprint" publications such as arXiv and bio-arXiv, etc. 
 It is based on the [**nips_2018.sty**](https://media.nips.cc/Conferences/NIPS2018/Styles/nips_2018.sty) style.
 
-This styling maintains the esthetic of NIPS but adding and changing features to make it (IMO) even better and nore suitable for preprints.
+This styling maintains the esthetic of NIPS but adding and changing features to make it (IMO) even better and more suitable for preprints.
 The result looks fairly different from NIPS style so that readers won't get confused to think that the preprint was published in NIPS. 
 
 ### Why NIPS? 
