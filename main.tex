@@ -1,0 +1,200 @@
+\documentclass{article}
+
+\usepackage{arxiv}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{cleveref}       % smart cross-referencing
+\usepackage{lipsum}         % Can be removed after putting your text content
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage{doi}
+\usepackage{listings} 
+\usepackage{subcaption}
+\usepackage{tikz}
+\usepackage{enumitem}
+
+% node in tikz
+\usetikzlibrary{positioning}
+
+
+\title{Transitioning to Post-Quantum Key Management Framework}
+
+\newif\ifuniqueAffiliation
+% Uncomment to use multiple affiliations variant of author block 
+\uniqueAffiliationfalse
+
+\ifuniqueAffiliation % Standard variant of author block
+\author{ 
+	% Department of Computer Science\\
+	% Cranberry-Lemon University\\
+	% Pittsburgh, PA 15213 \\
+	% \texttt{hippo@cs.cranberry-lemon.edu} \\
+	% %% examples of more authors
+	% \And
+	% \href{https://orcid.org/0000-0000-0000-0000}{\includegraphics[scale=0.06]{orcid.pdf}\hspace{1mm}Elias D.~Striatum} \\
+	% Department of Electrical Engineering\\
+	% Mount-Sheikh University\\
+	% Santa Narimana, Levand \\
+	% \texttt{stariate@ee.mount-sheikh.edu} \\
+}
+\else
+% Multiple affiliations variant of author block
+\usepackage{authblk}
+\renewcommand\Authfont{\bfseries}
+\setlength{\affilsep}{0em}
+% box is needed for correct spacing with authblk
+\newbox{\orcid}\sbox{\orcid}{} 
+
+\author[1]{%
+	Mahabir Prasad Jhanwar\thanks{\texttt{mahavir.jhawar@ashoka.edu.in}}}%
+
+\author[1]{%
+	Aarav Varshney\thanks{\texttt{aarav.varshney@ashoka.edu.in}}
+	}%
+
+\author[1]{%
+	Adit Dhawan\thanks{\texttt{adit.dhawan\_asp24@ashoka.edu.in}}
+}%
+
+\affil[1]{Department of Computer Science, Ashoka University, Sonipat, India}
+% \affil[2]{Department of Electrical Engineering, Mount-Sheikh University, Santa Narimana, Levand}
+\fi
+
+% Uncomment to override  the `A preprint' in the header
+\renewcommand{\headeright}{Technical Report}
+\renewcommand{\undertitle}{Technical Report}
+% \renewcommand{\shorttitle}{\textit{arXiv} Template}
+
+%%% Add PDF metadata to help others organize their library
+%%% Once the PDF is generated, you can check the metadata with
+%%% $ pdfinfo template.pdf
+\hypersetup{
+pdftitle={Technical Report PQC},
+pdfsubject={q-bio.NC, q-bio.QM},
+pdfauthor={Mahabir Prasad Jhanwar, Aarav Varshney, Adit Dhawan},
+pdfkeywords={},
+}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+	With the advent of quantum computing on the horizon, there is an urgent need to transition cryptographic systems to post-quantum algorithms. This paper describes the implementation of a post-quantum key management framework (KMF) that allows secure key exchange and authentication between a key distribution center (KDC) and a communicating entity (Lab). To achieve post-quantum confidentiality, we utilize PQ Crystals's Kyber key encapsulation mechanism (KEM) for quantum-safe key exchange and modify it to encapsulate larger keys. For authentication, we leverage recent work on post-quantum X.509 certificates and generate certificates signed using PQ Crystals's Dilithium digital signature algorithm. This provides a blueprint for transitioning KMFs to a post-quantum setting with confidentiality and authentication guarantees against quantum attacks.
+
+\end{abstract}
+
+
+% keywords can be removed
+% \keywords{Post-Quantum Cryptography \and Second keyword \and More}
+
+
+\section{Introduction}
+\label{sec:intro}
+
+Cryptographic techniques rely on cryptographic keys that are managed and protected throughout their lifecycle by a key management framework (KMF). Effective cryptography reduces the need to protect large amounts of data down to just protecting the keys. 
+
+However, recent advances in quantum computing will likely lead to large-scale quantum computers that can break widely used public key cryptosystems like RSA via Shor's algorithm. This makes classical KMF implementations vulnerable for high-security use cases like governments. To address this looming threat, we need to transition to post-quantum cryptographic algorithms.
+
+In this report, we describe a post-quantum KMF that allows a key distribution center (KDC) to generate confidential material and transfer it securely to a communicating entity (X) with post-quantum security guarantees. There are two main challenges in designing such a framework: ensuring confidentiality and authentication in a post-quantum setting. 
+
+Confidentiality can be achieved with symmetric encryption like AES, which is secure against quantum attacks. However, the key exchange protocol establishing a shared secret between the KDC and Lab must also be quantum-safe. We use PQ Crystals's Kyber key encapsulation mechanism (KEM) for this and modify it to encapsulate keys larger than 32 bytes. Authentication typically relies on long-term public keys stored in X.509 certificates. To enable post-quantum authentication, we leverage recent work on post-quantum X.509 certificates and design certificates signed using PQ Crystals's Dilithium digital signature scheme.
+
+\section{Design}
+\label{sec:design}
+
+\subsection{Key Setup}
+\label{sec:keysetup}
+
+The KDC generates long-term key pairs for signing and key exchange with X. Specifically, it generates a Dilithium public/private key pair ($\mathsf{pk_{KDC}^s}$, $\mathsf{sk_{KDC}^s}$) for signing and a Kyber KEM public/private key pair ($\mathsf{pk_{X}^e}$, $\mathsf{sk_{X}}^e$) for encrypted key exchange. To complete the initial setup, the KDC sends $\mathsf{pk_{KDC}^s}$, $\mathsf{pk_{X}^e}$ and $\mathsf{sk_{X}}^e$ to X. We implement this in two phases: first building Python wrappers around the Dilithium and Kyber C source code libraries, and then using these wrappers to generate the key pairs in Python. Next, we leverage our certificate generation code to create two X.509 certificates: a self-signed certificate for the KDC containing $\mathsf{pk_{KDC}^s}$, and a KDC-signed certificate for X containing both $\mathsf{pk_{X}^e}$ and $\mathsf{sk_{X}}^e$ to enable authenticated key exchange.
+
+\textbf{Dilithium and Kyber}. We build a wrapper around Dilithium by compiling the Dilithium source code from \href{https://github.com/pq-crystals/dilithium}{\texttt{https://github.com/pq-crystals/dilithium}} into a shared library (.so on Linux, .dll on Windows). We then load this shared library in Python and use the ctypes module to call the underlying C functions for Dilithium from our Python code. Specifically, we export three methods from the wrapper: \texttt{keygen}, \texttt{sign}, and \texttt{verify}. \texttt{keygen} generates a Dilithium public/private key pair. \texttt{sign} takes a message and private key as input and returns a signature. \texttt{verify} takes a message, signature, and public key as input and returns a boolean indicating if the signature is valid. We use the same overall process to build a Python wrapper around Kyber as well. Abstracting Dilithium and Kyber into Python wrappers allows us to leverage these C-based libraries in our project cleanly from Python code.
+
+\begin{figure}
+	\begin{subfigure}[b]{0.45\textwidth}
+\begin{lstlisting}[language=Mathematica,frame=single, basicstyle=\tiny]
+Certificate ::= SEQUENCE {
+ tbsCertificate ToBeSigned,
+ signatureAlgorithm AlgorithmIdentifier,
+ signature BIT STRING }
+
+ToBeSigned ::= SEQUENCE {
+ version [0] Version DEFAULT v1,
+ serialNumber SerialNumber,
+ signature AlgorithmIdentifier,
+ issuer Name,
+ validity Validity,
+ subject Name,
+ subjectPublicKeyInfo SubjectPublicKeyInfo,
+ issuerUniqueID [1] IMPLICIT UID OPTIONAL,
+ subjectUniqueID [2] IMPLICIT UID OPTIONAL,
+ extensions [3] Extensions OPTIONAL }
+\end{lstlisting}
+	\caption{ASN.1 structure of X.509 certificate}
+	\label{fig:asn}
+\end{subfigure}
+\begin{subfigure}[b]{0.45\textwidth}
+	\centering
+ 	\begin{tikzpicture}[node distance=3cm]
+		\node (data) [rectangle, draw, text width=2cm, text centered, rounded corners, fill=blue!10] {Data following the ASN.1 spec};
+		\node (der) [rectangle, draw, text width=2cm, text centered, rounded corners, fill=blue!30, right of=data] {DER Encoding (binary data)};
+		\node (base64) [rectangle, draw, text width=2cm, text centered, rounded corners, fill=green!30, below of=der] {Base64 Encoding (text data)};
+		\node (pem) [rectangle, draw, text width=2cm, text centered, rounded corners, fill=orange!30, left of=base64] {PEM Encoding (text data)};
+		\draw [thick,->] (data) -- (der);
+		\draw [thick,->] (der) -- (base64);
+		\draw [thick,->] (base64) -- (pem);
+	\end{tikzpicture}
+	\caption{Steps in building an X.509 certificate.}
+	\label{fig:steps}
+\end{subfigure}
+\caption{Overall components involved in X.509 certificate generation.}
+\label{fig:fig1}
+\end{figure}
+
+
+\textbf{X.509 Certificates}. An X.509 certificate binds a public key to the identity of the owner of the matching private key (the subject), and identifies the entity that vouches for this binding (the issuer). Certificates also contain validity periods, extensions for revocation checking, and usage constraints. We construct a certificate using the ASN.1 structure defined in \cite{rfc5280}. The Abstract Syntax Notation One (ASN.1) is a language for describing structured data like certificates. As shown in Figure~\ref{fig:fig1}, given an ASN.1 specification and corresponding values, encoding rules derive a binary representation of the certificate. Although many encoding rules exist, X.509 certificates use Distinguished Encoding Rules (DER) which ensures unique serialization - no two distinct certificates have the same encoding. Furthermore, we use PEM encoding to convert the binary DER-encoded string into a readable text format. PEM encoding base64-encodes the data and adds header/footer lines to identify the content type.
+
+The ASN.1 schema for X.509 certificates relies on two key data structures - SubjectPublicKeyInfo and AlgorithmIdentifier:
+
+\begin{lstlisting}[language=Mathematica, basicstyle=\tiny]
+SubjectPublicKeyInfo ::= SEQUENCE {                      AlgorithmIdentifier ::= SEQUENCE {
+	algorithm AlgorithmIdentifier,				algorithm OBJECT IDENTIFIER,
+	subjectPublicKey BIT STRING				parameters ANY DEFINED BY algorithm OPTIONAL
+}							  }	
+
+
+\end{lstlisting}
+
+The subjectPublicKey field contains the public key, while algorithm identifies the algorithm via an object identifier (OID).
+
+To integrate Dilithium signatures, we modify the ASN.1 schema as follows:
+
+First, in the Certificate sequence definition, we update two fields:
+\begin{itemize}[leftmargin=*]
+	\item The signatureAlgorithm field is changed to use the Dilithium object identifier (OID), specifically 1.3.6.1.4.1.2.267.7.4.4 from the OQS OpenSSL fork~\cite{oqsOpenSSL}.
+	\item The signature value is updated to contain a Dilithium signature.
+\end{itemize}
+In the ToBeSigned sequence:
+\begin{itemize}[leftmargin=*]
+	\item The signature field is same as the updated signatureAlgorithm in the Certificate sequence.
+	\item The subjectPublicKeyInfo field is of type SubjectPublicKeyInfo. Within this type, the algorithm field is changed to the Dilithium OID and subjectPublicKey contains a Dilithium public key.
+\end{itemize}
+
+In summary, we update the OID fields and algorithm-specific values to leverage Dilithium signatures in X.509 certificates. The modifications use ASN.1's agility to enable post-quantum algorithms.
+
+\subsection{Key Transport}
+\label{sec:keyexchange}
+
+The KDC uses $\mathsf{pk_{X}^e}$ to encapsulate a shared secret key $\mathsf{k_s}$ and sends the encapsulated key $\mathsf{c_{k_s}}$ to X. The KDC uses its private key $\mathsf{sk_{X}}^e$ to retrieve $\mathsf{k_s}$. 
+% As of now we only consider a Hardware Security Module (HSM) based approach to transfer $\mathsf{c_{k_s}}$ and   but due to our use of certificates, we can easily extend this to an online medium.
+
+\bibliographystyle{unsrtnat}
+\bibliography{references} 
+
+\end{document}
