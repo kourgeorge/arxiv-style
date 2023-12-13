@@ -1,0 +1,21 @@
+name: Build LaTeX document and release PDF
+on:
+  push:
+    tags:
+      - "v*"
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v3
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: main.tex
+      - name: Release PDF
+        uses: softprops/action-gh-release@v1
+        with:
+          files: main.pdf
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
