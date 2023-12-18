@@ -118,34 +118,8 @@ pdfkeywords={First keyword, Second keyword, More},
 \lipsum[2]
 \lipsum[3]
 
-
-\section{Related work}
-
-\subsection{Co-clustering}
-
-General introduciton to co-clustering:
-Co-clustering, also known in the realm of 2D data as biclustering, has evolved significantly since its inception in the late 1990s and early 2000s \cite{cheng2000BiclusteringExpressionData}.
-Originally conceptualized for gene expression data analysis, the primary goal of co-clustering was to identify subgroups of genes exhibiting similar expression patterns under certain conditions \cite{madeira2004BiclusteringAlgorithmsBiological}
-This technique has since found extensive applications across various domains, including text mining \cite{siklosi2012ContentbasedTrustBias, song2013ConstrainedTextCoclustering}, image analysis\cite{khan2020CoClusteringRevealSalient}, and collaborative filtering \cite{daruru2009PervasiveParallelismData}, highlighting its versatility and effectiveness in uncovering local structures within data.
-
-\subsection{Graph-based co-clustering}
-\cite{kluger2003SpectralBiclusteringMicroarray, sun2014BiforceLargescaleBicluster}
-
-
-\cite{kim2022ABCAttributedBipartite}
-\subsection{Matrix factorization}
-Over view: \cite{lin2019OverviewCoClusteringMatrix}
-\subsection{Neural Network models}
-\cite{dongkuanxu2019DeepCoClustering}
-
-
-% A pivotal shift in co-clustering methodology emerged with the adoption of matrix factorization techniques. This approach, fundamentally different from traditional clustering methods, factors the data matrix into multiple matrices, revealing underlying patterns and associations between rows and columns. The introduction of Non-negative Matrix Factorization (NMF) in co-clustering marked a significant advancement. By decomposing the sample-feature matrix into separate matrices for samples and features, NMF-based co-clustering techniques, such as the orthogonal NMTF by Ding et al. \cite{ding2005OrthogonalNonnegativeMatrix}, provided a more interpretable and efficient way to identify clusters.
-
-% Following this, various enhancements and extensions to matrix factorization in co-clustering were proposed. Methods like Fast Non-negative Matrix Tri-factorization (FNMTF) \cite{wang2019DualHypergraphRegularized} and Bilateral k-means (BKM) \cite{han2020BilateralKMeans} further refined the approach by introducing constraints and optimizations that improved computational speed and accuracy. These developments underscored the potential of matrix factorization in efficiently handling large-scale and high-dimensional data.
-
-% The matrix factorization-based co-clustering has not only been limited to static data analysis but also extended to dynamic scenarios. This adaptation is evident in applications like real-time collaborative filtering and online text mining, where the ability to update co-clusters incrementally becomes crucial \cite{daruru2009PervasiveParallelismData}.
-
-In summary, the journey of co-clustering from its gene expression data analysis roots to a widely applicable data analysis technique underscores its adaptability and effectiveness. The integration of matrix factorization into co-clustering has been a game-changer, offering scalable, interpretable, and efficient solutions for complex data clustering challenges.
+\input{related_work.tex}
+\input{method.tex}
 
 \begin{table}
 	\caption{Sample table title}
