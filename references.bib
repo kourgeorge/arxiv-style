@@ -159,3 +159,53 @@
   doi = {10.1093/nar/gku201},
   langid = {english}
 }
+@inproceedings{ding2006OrthogonalNonnegativeMatrix,
+  title = {Orthogonal Nonnegative Matrix T-Factorizations for Clustering},
+  booktitle = {Proceedings of the 12th {{ACM SIGKDD}} International Conference on {{Knowledge}} Discovery and Data Mining},
+  author = {Ding, Chris and Li, Tao and Peng, Wei and Park, Haesun},
+  date = {2006-08-20},
+  series = {{{KDD}} '06},
+  pages = {126--135},
+  publisher = {{Association for Computing Machinery}},
+  location = {{New York, NY, USA}},
+  doi = {10.1145/1150402.1150420},
+  abstract = {Currently, most research on nonnegative matrix factorization (NMF)focus on 2-factor \$X=FG\^T\$ factorization. We provide a systematicanalysis of 3-factor \$X=FSG\^T\$ NMF. While it unconstrained 3-factor NMF is equivalent to it unconstrained 2-factor NMF, itconstrained 3-factor NMF brings new features to it constrained 2-factor NMF. We study the orthogonality constraint because it leadsto rigorous clustering interpretation. We provide new rules for updating \$F,S, G\$ and prove the convergenceof these algorithms. Experiments on 5 datasets and a real world casestudy are performed to show the capability of bi-orthogonal 3-factorNMF on simultaneously clustering rows and columns of the input datamatrix. We provide a new approach of evaluating the quality ofclustering on words using class aggregate distribution andmulti-peak distribution. We also provide an overview of various NMF extensions andexamine their relationships.目前，大多数关于非负矩阵分解（NMF）的研究都集中在2-factor \$X=FG\^T\$ factorization上。我们提供了 3 因子 \$X=FSG\^T\$ NMF 的系统分析。虽然无约束 3 因子 NMF 等同于无约束 2 因子 NMF，但有约束 3 因子 NMF 为其有约束 2 因子 NMF 带来了新特征。我们研究正交性约束，因为它会导致严格的聚类解释。我们提供了更新\$F、S、G\$的新规则，并证明了这些算法的收敛性。对 5 个数据集和真实世界的案例研究进行了实验，以显示双正交 3 因子 NMF 在同时聚类输入数据矩阵的行和列上的能力。我们提供了一种使用类聚合分布和多峰分布来评估词聚类质量的新方法。我们还提供了各种 NMF 扩展的概述并检查了它们的关系。},
+  eventtitle = {{{ACM Knowledge Discovery}} and {{Data Mining}}},
+  isbn = {978-1-59593-339-3},
+  langid = {english}
+}
+@article{wang2019DualHypergraphRegularized,
+  title = {Dual {{Hypergraph Regularized PCA}} for {{Biclustering}} of {{Tumor Gene Expression Data}}},
+  author = {Wang, Xuesong and Liu, Jian and Cheng, Yuhu and Liu, Aiping and Chen, Enhong},
+  date = {2019-12-01},
+  journaltitle = {IEEE Transactions on Knowledge and Data Engineering},
+  shortjournal = {IEEE Trans. Knowl. Data Eng.},
+  volume = {31},
+  number = {12},
+  pages = {2292--2303},
+  issn = {1041-4347, 1558-2191, 2326-3865},
+  doi = {10.1109/TKDE.2018.2874881},
+  abstract = {Clustering is a powerful approach to analyze gene expression data which is crucial to the investigation of effective treatment of cancer. Many graph regularize-based clustering methods have been proposed and shown to be superior to the traditional clustering methods. However, they only focus on the inner structure in samples and fail to take the feature manifold into account. In gene expression data, it's practical to hypothesize that both the samples and the genes lie on nonlinear low dimensional manifolds, namely sample manifold and gene manifold, respectively. Therefore in this paper, incorporating the geometric structures in both samples and features, we propose a Dual Hypergraph Regularized PCA (DHPCA) method for biclustering of tumor data. First, for gene expression data, we construct two hypergraphs, i.e., sample hypergraph and gene hypergraph, to estimate the intrinsic geometric structures of samples and genes. Then, we introduce the hypergraph regularization on both gene side and sample side. Finally, our biclustering method is formulated as two hypergraph regularized PCA with closed-form solution. We experimentally validate our proposed DHPCA algorithm on real applications and the promising results indicate its potential in high dimension data analysis.},
+  eventtitle = {{{IEEE Transactions}} on {{Knowledge}} and {{Data Engineering}}},
+  langid = {english}
+}
+@article{junweihan2017BilateralKMeansAlgorithm,
+  title = {Bilateral K-{{Means Algorithm}} for {{Fast Co-Clustering}}},
+  author = {{Junwei Han} and {Kun Song} and {Feiping Nie} and {Xuelong Li}},
+  date = {2017},
+  abstract = {With the development of the information technology, the amount of data, e.g. text, image and video, has been increased rapidly. Efficiently clustering those large scale data sets is a challenge. To address this problem, this paper proposes a novel co-clustering method named bilateral k-means algorithm (BKM) for fast co-clustering. Different from traditional k-means algorithms, the proposed method has two indicator matrices P and Q and a diagonal matrix S to be solved, which represent the cluster memberships of samples and features, and the co-cluster centres, respectively. Therefore, it could implement different clustering tasks on the samples and features simultaneously. We also introduce an effective approach to solve the proposed method, which involves less multiplication. The computational complexity is analyzed. Extensive experiments on various types of data sets are conducted. Compared with the state-of-the-art clustering methods, the proposed BKM not only has faster computational speed, but also achieves promising clustering results.}
+}
+@article{chen2023ParallelNonNegativeMatrix,
+  title = {Parallel Non-Negative Matrix Tri-Factorization for Text Data Co-Clustering},
+  author = {Chen, Yufu and Lei, Zhiqi and Rao, Yanghui and Xie, Haoran and Wang, Fu Lee and Yin, Jian and Li, Qing},
+  date = {2023-05},
+  journaltitle = {IEEE Transactions on Knowledge and Data Engineering},
+  shortjournal = {IEEE Trans. Knowl. Data Eng.},
+  volume = {35},
+  number = {5},
+  pages = {5132--5146},
+  issn = {1558-2191},
+  doi = {10.1109/TKDE.2022.3145489},
+  abstract = {As a novel paradigm for data mining and dimensionality reduction, Non-negative Matrix Tri-Factorization (NMTF) has attracted much attention due to its notable performance and elegant mathematical derivation, and it has been applied to a plethora of real-world applications, such as text data co-clustering. However, the existing NMTF-based methods usually involve intensive matrix multiplications, which exhibits a major limitation of high computational complexity. With the explosion at both the size and the feature dimension of texts, there is a growing need to develop a parallel and scalable NMTF-based algorithm for text data co-clustering. To this end, we first show in this paper how to theoretically derive the original optimization problem of NMTF by introducing the Lagrangian multipliers. Then, we propose to solve the Lagrange dual objective function in parallel through an efficient distributed implementation. Extensive experiments on five benchmark corpora validate the effectiveness, efficiency, and scalability of our distributed parallel update algorithm for an NMTF-based text data co-clustering method.},
+  eventtitle = {{{IEEE Transactions}} on {{Knowledge}} and {{Data Engineering}}}
+}

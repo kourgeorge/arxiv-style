@@ -1,41 +1,51 @@
 % !TeX root = main.tex
 
 %%%
- % File: /latex/big-cocluster-paper/related_work.tex
- % Created Date: Monday December 18th 2023
- % Author: Zihan
- % -----
- % Last Modified: Monday, 18th December 2023 4:58:13 pm
- % Modified By: the developer formerly known as Zihan at <wzh4464@gmail.com>
- % -----
- % HISTORY:
- % Date      		By   	Comments
- % ----------		------	---------------------------------------------------------
+% File: /latex/big-cocluster-paper/related_work.tex
+% Created Date: Monday December 18th 2023
+% Author: Zihan
+% -----
+% Last Modified: Monday, 18th December 2023 5:23:36 pm
+% Modified By: the developer formerly known as Zihan at <wzh4464@gmail.com>
+% -----
+% HISTORY:
+% Date      		By   	Comments
+% ----------		------	---------------------------------------------------------
 %%%
 
 \section{Related work}
 
 \subsection{Co-clustering}
 
-General introduction to co-clustering:
-Co-clustering, also known in the realm of 2D data as biclustering, has evolved significantly since its inception in the late 1990s and early 2000s \cite{cheng2000BiclusteringExpressionData}.
+Co-clustering, also known as bi-clustering, projective clustering, or two-way clustering, has evolved significantly since its inception in the late 1990s and early 2000s \cite{cheng2000BiclusteringExpressionData}.
 Originally conceptualized for gene expression data analysis, the primary goal of co-clustering was to identify subgroups of genes exhibiting similar expression patterns under certain conditions \cite{madeira2004BiclusteringAlgorithmsBiological}
 This technique has since found extensive applications across various domains, including text mining \cite{siklosi2012ContentbasedTrustBias, song2013ConstrainedTextCoclustering}, image analysis\cite{khan2020CoClusteringRevealSalient}, and collaborative filtering \cite{daruru2009PervasiveParallelismData}, highlighting its versatility and effectiveness in uncovering local structures within data.
 
 \subsection{Graph-based co-clustering}
-\cite{kluger2003SpectralBiclusteringMicroarray, sun2014BiforceLargescaleBicluster,kim2022ABCAttributedBipartite}
 
+Graph-based co-clustering techniques leverage graph models and algorithms to identify joint clusters in data.
+Sun et al.\cite{sun2014BiforceLargescaleBicluster} introduced Bi-Force, a heuristic based on weighted bicluster editing to perform co-clustering by editing similarity graphs. Compared to strict biclustering methods, the algorithm's theoretical foundation provides more flexibility.
+Kim et al.\cite{kim2022ABCAttributedBipartite} formulated the novel Attributed Bipartite Co-Clustering (ABC) problem combining bipartite modularity optimization and attribute cohesiveness for co-clustering. Proposed algorithms balance computational complexity against optimality.
+Key innovations in graph-based co-clustering include leveraging graph editing techniques to allow flexibility beyond strict biclustering. Recent methods further incorporate node/edge attributes and properties such as cohesiveness and modularity to improve clustering quality. Evaluations on gene networks and other domains demonstrate empirical improvements over existing techniques. Future graph-based techniques may build on these advances for increased efficiency and accuracy.
+
+% \cite{kluger2003SpectralBiclusteringMicroarray, sun2014BiforceLargescaleBicluster,kim2022ABCAttributedBipartite}
+\subsection{Neural Network models}
+Dong et al.\cite{dongkuanxu2019DeepCoClustering} proposed DeepCC, the first deep learning model for co-clustering. DeepCC employs deep autoencoders and Gaussian Mixture Models to simultaneously cluster instances and features in an end-to-end fashion, outperforming traditional pipelines. A mutual information loss connects the joint instance and feature representation learning. However, DeepCC is limited to static data and does not scale well to large datasets.
 
 \subsection{Matrix factorization}
-Over view: \cite{lin2019OverviewCoClusteringMatrix}
-\subsection{Neural Network models}
-\cite{dongkuanxu2019DeepCoClustering}
+%TODO: Overview: \cite{lin2019OverviewCoClusteringMatrix}
+Kluger et al. \cite{kluger2003SpectralBiclusteringMicroarray} developed a spectral biclustering method that utilizes singular value decomposition (SVD) to find checkerboard structures corresponding to genes differentially expressed across subsets of conditions in gene expression data. This exemplifies using linear algebra techniques on graph models for biclustering.
+
+A pivotal shift in co-clustering methodology emerged with the adoption of matrix factorization techniques. This approach, fundamentally different from traditional clustering methods, factors the data matrix into multiple matrices, revealing underlying patterns and associations between rows and columns. The introduction of Non-negative Matrix Factorization (NMF) in co-clustering marked a significant advancement. By decomposing the sample-feature matrix into separate matrices for samples and features, NMF-based co-clustering techniques, such as the orthogonal NMTF by Ding et al. \cite{ding2006OrthogonalNonnegativeMatrix}, provided a more interpretable and efficient way to identify clusters.
+
+Following this, various enhancements and extensions to matrix factorization in co-clustering were proposed. Methods like Fast Non-negative Matrix Tri-factorization (FNMTF) \cite{wang2019DualHypergraphRegularized}and Bilateral k-means (BKM) \cite{junweihan2017BilateralKMeansAlgorithm} further refined the approach by introducing constraints and optimizations that improved computational speed and accuracy. These developments underscored the potential of matrix factorization in efficiently handling large-scale and high-dimensional data.
+
+The matrix factorization-based co-clustering has not only been limited to static data analysis but also extended to dynamic scenarios. This adaptation is evident in applications like real-time collaborative filtering and online text mining, where the ability to update co-clusters incrementally becomes crucial \cite{daruru2009PervasiveParallelismData}.
 
 
-% A pivotal shift in co-clustering methodology emerged with the adoption of matrix factorization techniques. This approach, fundamentally different from traditional clustering methods, factors the data matrix into multiple matrices, revealing underlying patterns and associations between rows and columns. The introduction of Non-negative Matrix Factorization (NMF) in co-clustering marked a significant advancement. By decomposing the sample-feature matrix into separate matrices for samples and features, NMF-based co-clustering techniques, such as the orthogonal NMTF by Ding et al. \cite{ding2005OrthogonalNonnegativeMatrix}, provided a more interpretable and efficient way to identify clusters.
 
-% Following this, various enhancements and extensions to matrix factorization in co-clustering were proposed. Methods like Fast Non-negative Matrix Tri-factorization (FNMTF) \cite{wang2019DualHypergraphRegularized} and Bilateral k-means (BKM) \cite{han2020BilateralKMeans} further refined the approach by introducing constraints and optimizations that improved computational speed and accuracy. These developments underscored the potential of matrix factorization in efficiently handling large-scale and high-dimensional data.
+% now, to process big data, MTF is the most popular method. \cite{chen2023ParallelNonNegativeMatrix}
 
-% The matrix factorization-based co-clustering has not only been limited to static data analysis but also extended to dynamic scenarios. This adaptation is evident in applications like real-time collaborative filtering and online text mining, where the ability to update co-clusters incrementally becomes crucial \cite{daruru2009PervasiveParallelismData}.
+While matrix factorization techniques have shown promise for co-clustering large datasets, scaling to massive high-dimensional data remains an open challenge. Chen et al. \cite{chen2023ParallelNonNegativeMatrix} proposed a parallel non-negative matrix tri-factorization method that distributes computation across multiple nodes to accelerate factorizations. However, such approaches still struggle on web-scale data.
 
-In summary, the journey of co-clustering from its gene expression data analysis roots to a widely applicable data analysis technique underscores its adaptability and effectiveness. The integration of matrix factorization into co-clustering has been a game-changer, offering scalable, interpretable, and efficient solutions for complex data clustering challenges.
+Our proposed method takes a divide-and-conquer approach, directly partitioning the input matrix into smaller submatrices before co-clustering each one in parallel. This blocks the original high dimensionality to make co-clustering feasible. The separate results are then ensembled to produce final co-clusters. This represents a new paradigm tailored for big data that sidesteps computational barriers by transforming the problem space rather than relying solely on distributed computing optimizations.
